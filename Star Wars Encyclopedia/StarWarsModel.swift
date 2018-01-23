@@ -8,10 +8,10 @@
 
 import Foundation
 class StarWarsModel {
-    static func getAllPeople(completionHandler:@escaping (_ data: Data?, _ response: URLResponse?, _ error: Error?) -> Void) {
-        if let url = URL(string: "https://swapi.co/api/people/") {
+    static func getAllPeople(url: String, completionHandler:@escaping (_ data: Data?, _ response: URLResponse?, _ error: Error?) -> Void) {
+        if let text = URL(string: url) {
             let session = URLSession.shared
-            let task = session.dataTask(with: url, completionHandler: completionHandler)
+            let task = session.dataTask(with: text, completionHandler: completionHandler)
             task.resume()
         }
     }

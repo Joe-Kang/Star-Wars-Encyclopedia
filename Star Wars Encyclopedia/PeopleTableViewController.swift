@@ -3,20 +3,23 @@ class PeopleTableViewController: UITableViewController, detailDelegate {
     var people = [NSDictionary]()
     override func viewDidLoad() {
         super.viewDidLoad()
-        StarWarsModel.getAllPeople(completionHandler: {
-            data, response, error in
-            do {
-                if let jsonResult = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers) as? NSDictionary {
-                    if let results = jsonResult["results"] as? NSArray {
-                        for person in results {
-                            let personDict = person as! NSDictionary
-                            self.people.append(personDict)
+        for i in 1...9 {
+            var url = "https://swapi.co/api/people/?page=\(i)"
+            StarWarsModel.getAllPeople(url: url, completionHandler: {
+                data, response, error in
+                do {
+                    if let jsonResult = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions.mutableContainers) as? NSDictionary {
+                        if let results = jsonResult["results"] as? NSArray {
+                            for person in results {
+                                let personDict = person as! NSDictionary
+                                self.people.append(personDict)
+                            }
                         }
                     }
-                }
-                DispatchQueue.main.async {self.tableView.reloadData()}
-            } catch {print(error)}
-        })
+                    DispatchQueue.main.async {self.tableView.reloadData()}
+                } catch {print(error)}
+            })
+        }
     }
     
     override func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
