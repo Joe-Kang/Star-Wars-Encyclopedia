@@ -6,23 +6,24 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--People-->
         <scene sceneID="7hn-AZ-dq3">
             <objects>
-                <tableViewController id="5ZZ-uw-fub" customClass="PeopleViewController" customModule="Star_Wars_Encyclopedia" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="5ZZ-uw-fub" customClass="PeopleTableViewController" customModule="Star_Wars_Encyclopedia" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Dwl-a5-BBs">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="personCell" id="3GF-jb-bAW" userLabel="Person Cell">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="detailDisclosureButton" indentationWidth="10" reuseIdentifier="personCell" id="3GF-jb-bAW" userLabel="Person Cell">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3GF-jb-bAW" id="Nmh-0Q-eWF">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="307" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -33,10 +34,81 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="People" id="FGB-Rz-yve"/>
+                    <connections>
+                        <segue destination="iTx-5c-J9C" kind="presentation" identifier="personDetailSegue" id="n9p-yY-4pG"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wyF-9S-Ho4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1076" y="-555"/>
+        </scene>
+        <!--Person Detail View Controller-->
+        <scene sceneID="red-fd-wB8">
+            <objects>
+                <viewController id="iTx-5c-J9C" customClass="PersonDetailViewController" customModule="Star_Wars_Encyclopedia" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="siL-Tt-iJc">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7em-kI-hdd">
+                                <rect key="frame" x="164" y="617" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Return"/>
+                                <connections>
+                                    <action selector="returnButton:" destination="iTx-5c-J9C" eventType="touchUpInside" id="00b-ZP-6dm"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2ob-If-6x1">
+                                <rect key="frame" x="16" y="20" width="75" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gender" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0OR-BT-lp6">
+                                <rect key="frame" x="16" y="49" width="75" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Birth Year" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fYo-Am-3wW">
+                                <rect key="frame" x="16" y="78" width="75" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mass" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zl9-zm-8wy">
+                                <rect key="frame" x="16" y="107" width="75" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="0OR-BT-lp6" firstAttribute="leading" secondItem="HbM-Fv-WgP" secondAttribute="leading" constant="16" id="3dE-Ij-SgT"/>
+                            <constraint firstItem="zl9-zm-8wy" firstAttribute="top" secondItem="fYo-Am-3wW" secondAttribute="bottom" constant="8" id="Cgj-14-2Fo"/>
+                            <constraint firstItem="fYo-Am-3wW" firstAttribute="top" secondItem="0OR-BT-lp6" secondAttribute="bottom" constant="8" id="E03-K3-mse"/>
+                            <constraint firstItem="0OR-BT-lp6" firstAttribute="top" secondItem="2ob-If-6x1" secondAttribute="bottom" constant="8" id="GHD-Z5-3IL"/>
+                            <constraint firstItem="fYo-Am-3wW" firstAttribute="leading" secondItem="HbM-Fv-WgP" secondAttribute="leading" constant="16" id="Qwd-BC-Uab"/>
+                            <constraint firstItem="fYo-Am-3wW" firstAttribute="trailing" secondItem="2ob-If-6x1" secondAttribute="trailing" id="Tya-1r-myp"/>
+                            <constraint firstItem="0OR-BT-lp6" firstAttribute="trailing" secondItem="2ob-If-6x1" secondAttribute="trailing" id="Vh7-0h-44r"/>
+                            <constraint firstItem="zl9-zm-8wy" firstAttribute="trailing" secondItem="2ob-If-6x1" secondAttribute="trailing" id="aNW-9N-AnG"/>
+                            <constraint firstItem="2ob-If-6x1" firstAttribute="leading" secondItem="HbM-Fv-WgP" secondAttribute="leading" constant="16" id="dZn-Xq-itt"/>
+                            <constraint firstItem="2ob-If-6x1" firstAttribute="top" secondItem="HbM-Fv-WgP" secondAttribute="top" id="das-zq-C8y"/>
+                            <constraint firstItem="zl9-zm-8wy" firstAttribute="leading" secondItem="HbM-Fv-WgP" secondAttribute="leading" constant="16" id="lSq-5t-g7Q"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="HbM-Fv-WgP"/>
+                    </view>
+                    <connections>
+                        <outlet property="birthLabel" destination="fYo-Am-3wW" id="Avs-dN-vlO"/>
+                        <outlet property="genderLabel" destination="0OR-BT-lp6" id="FXs-qA-kGs"/>
+                        <outlet property="massLabel" destination="zl9-zm-8wy" id="OQs-gh-KCr"/>
+                        <outlet property="nameLabel" destination="2ob-If-6x1" id="hSI-83-0zU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TLF-XE-hhq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1784.8" y="-555.47226386806597"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Ygf-D2-HtR">
@@ -65,11 +137,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="filmCell" id="YwB-ty-xMp" userLabel="Film Cell">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="detailDisclosureButton" indentationWidth="10" reuseIdentifier="filmCell" id="YwB-ty-xMp" userLabel="Film Cell">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="YwB-ty-xMp" id="r7Z-Oa-DUK">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="307" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>

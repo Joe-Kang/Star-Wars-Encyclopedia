@@ -34,11 +34,8 @@ class FilmTableViewController: UITableViewController {
         return films.count
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        // Create a generic cell
-        let cell = UITableViewCell()
-        // set the default cell label to the corresponding element in the people array
+        let cell = tableView.dequeueReusableCell(withIdentifier: "filmCell", for: indexPath)
         cell.textLabel?.text = films[indexPath.row]
-        // return the cell so that it can be rendered
         return cell
     }
 }
