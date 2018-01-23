@@ -32,7 +32,7 @@ class PeopleTableViewController: UITableViewController, detailDelegate {
         personDetailViewController.person = person
     }
     
-    func cancelButtonPressed(by controller: PersonDetailViewController) {
+    func cancelButtonPressed(by controller: Any) {
         dismiss(animated: true, completion: nil)
     }
     
@@ -46,7 +46,7 @@ class PeopleTableViewController: UITableViewController, detailDelegate {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "personCell", for: indexPath)
         if let name = people[indexPath.row]["name"] {
-            cell.textLabel?.text = String(describing: name)
+            cell.textLabel?.text = name as? String
         }
         
         return cell

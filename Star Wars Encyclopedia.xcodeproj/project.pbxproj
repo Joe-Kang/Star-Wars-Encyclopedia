@@ -17,6 +17,7 @@
 		B4BB5FCC201699EF0001DC0F /* StarWarsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BB5FCB201699EE0001DC0F /* StarWarsModel.swift */; };
 		B4BB5FCE2016A4490001DC0F /* PersonDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BB5FCD2016A4490001DC0F /* PersonDetailViewController.swift */; };
 		B4BB5FD02016AACD0001DC0F /* detailDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BB5FCF2016AACD0001DC0F /* detailDelegate.swift */; };
+		B4BB5FD22016C96D0001DC0F /* FilmDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BB5FD12016C96D0001DC0F /* FilmDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		B4BB5FCB201699EE0001DC0F /* StarWarsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarWarsModel.swift; sourceTree = "<group>"; };
 		B4BB5FCD2016A4490001DC0F /* PersonDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetailViewController.swift; sourceTree = "<group>"; };
 		B4BB5FCF2016AACD0001DC0F /* detailDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = detailDelegate.swift; sourceTree = "<group>"; };
+		B4BB5FD12016C96D0001DC0F /* FilmDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +70,7 @@
 				B4BB5FB6201685420001DC0F /* PeopleTableViewController.swift */,
 				B4BB5FCF2016AACD0001DC0F /* detailDelegate.swift */,
 				B4BB5FB8201685420001DC0F /* Main.storyboard */,
+				B4BB5FD12016C96D0001DC0F /* FilmDetailViewController.swift */,
 				B4BB5FCD2016A4490001DC0F /* PersonDetailViewController.swift */,
 				B4BB5FC9201696680001DC0F /* FilmTableViewController.swift */,
 				B4BB5FCB201699EE0001DC0F /* StarWarsModel.swift */,
@@ -154,6 +157,7 @@
 				B4BB5FB7201685420001DC0F /* PeopleTableViewController.swift in Sources */,
 				B4BB5FB5201685420001DC0F /* AppDelegate.swift in Sources */,
 				B4BB5FCC201699EF0001DC0F /* StarWarsModel.swift in Sources */,
+				B4BB5FD22016C96D0001DC0F /* FilmDetailViewController.swift in Sources */,
 				B4BB5FD02016AACD0001DC0F /* detailDelegate.swift in Sources */,
 				B4BB5FBD201685420001DC0F /* Star_Wars_Encyclopedia.xcdatamodeld in Sources */,
 				B4BB5FCE2016A4490001DC0F /* PersonDetailViewController.swift in Sources */,

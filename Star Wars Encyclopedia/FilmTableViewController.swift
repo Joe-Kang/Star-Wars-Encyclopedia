@@ -1,6 +1,6 @@
 import UIKit
-class FilmTableViewController: UITableViewController {
-    var films = [String]()
+class FilmTableViewController: UITableViewController, detailDelegate {
+    var films = [NSDictionary]()
     override func viewDidLoad() {
         super.viewDidLoad()
         StarWarsModel.getAllFilms(completionHandler: {
@@ -10,21 +10,34 @@ class FilmTableViewController: UITableViewController {
                     if let results = jsonResult["results"] as? NSArray {
                         for film in results {
                             let filmDict = film as! NSDictionary
-                            self.films.append(filmDict["title"] as! String)
+                            self.films.append(filmDict)
                         }
                     }
                 }
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                }
+                DispatchQueue.main.async {self.tableView.reloadData()}
             } catch {
                 print(error)
             }
         })
     }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+    
+    override func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
+        performSegue(withIdentifier: "filmDetailSegue", sender: indexPath)
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let viewController = segue.destination
+        let filmDetailViewController = viewController as! FilmDetailViewController
+        filmDetailViewController.delegate = self
+        let indexPath = sender as! NSIndexPath
+        let film = films[indexPath.row]
+        filmDetailViewController.film = film
+    }
+    
+    func cancelButtonPressed(by controller: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+   
     override func numberOfSections(in tableView: UITableView) -> Int {
         // if we return - sections we won't have any sections to put our rows in
         return 1
@@ -35,8 +48,12 @@ class FilmTableViewController: UITableViewController {
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "filmCell", for: indexPath)
-        cell.textLabel?.text = films[indexPath.row]
+        if let title = films[indexPath.row]["title"] {
+            cell.textLabel?.text = title as? String
+        }
+        
         return cell
     }
+    override func didReceiveMemoryWarning() {super.didReceiveMemoryWarning()}
 }
 

@@ -9,5 +9,5 @@
 import Foundation
 
 protocol detailDelegate: class {
-    func cancelButtonPressed(by controller: PersonDetailViewController)
+    func cancelButtonPressed(by controller: Any)
 }
